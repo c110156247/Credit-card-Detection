@@ -1,3 +1,6 @@
 # 信用卡詐欺偵測（Credit Card Fraud Detection）
-## 連結：https://storage.googleapis.com/download.tensorflow.org/data/creditcard.csv
+## 資料來源：https://storage.googleapis.com/download.tensorflow.org/data/creditcard.csv
+此資料集包含歐洲持卡人在 2013 年 9 月使用信用卡進行的交易。 該資料集呈現了兩天內發生的交易，在 284,807 筆交易中，我們發現了 492 筆詐欺交易。此資料集高度不平衡，正類（詐欺）交易占所有交易的 0.172%。
 
+## 摘要
+本作品旨在透過機器學習模型偵測高度不平衡的信用卡詐欺交易資料，考量**資料不平衡**，模型主要以**精確度-召回率曲線下面積**(**AUPRC**)進行評估。經過初始模型訓練後，XGBoost展現最佳表現，在ROC曲線下面積 (AUC) 達0.974，平均精確率 (AP) 達0.878。為進一步優化少數類別的偵測能力，使用了多種SMOTE採樣技術，其中**SMOTEENN表現最佳**，成功將XGBoost模型的AUC從0.9743提升至**0.9873**，並將詐欺交易的召回率從0.81提高到**0.86**。最終，透過**SHAP特徵重要性分析**，發現**V14**是區分詐欺樣本的關鍵特徵，其對詐欺樣本的平均影響力（SHAP值）顯著高於非詐欺樣本，其次為V4。
